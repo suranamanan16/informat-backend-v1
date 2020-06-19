@@ -2,7 +2,7 @@ const sql = require('./db.js');
 
 
 //construtor method
-const product = function(product){
+const Product = function(product){
   this.id  = product.id;
   this.name = product.name;
   this.quantity = product.quantity;
@@ -10,7 +10,7 @@ const product = function(product){
   this.category = product.category;
 }
 
-Product.create(product, result){
+Product.create = function(product, result){
   sql.query('INSERT INTO products SET ?', product, function(err, res){
     if(err){
       result(err, null)
@@ -64,4 +64,4 @@ Product.getBySearch = function(productName, result){
 }
 
 
-module.export = Products;
+module.export = Product;

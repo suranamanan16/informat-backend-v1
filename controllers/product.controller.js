@@ -1,4 +1,4 @@
-const Products = require('../models/product.model.js');
+const Product = require('../models/product.model.js');
 
 exports.create = function(req, res){
 
@@ -10,7 +10,7 @@ exports.create = function(req, res){
     category: req.body.category
   })
 
-  Products.create(product, (err, data) => {
+  Product.create(product, (err, data) => {
     if (err)
       res.status(500).send({
         message:
@@ -23,7 +23,7 @@ exports.create = function(req, res){
 
 exports.getByCategory = function(req, res){
 
-  Products.getByCategory(req.params.category, function(error, data){
+  Product.getByCategory(req.params.category, function(error, data){
     if(error){
       res.status(500).send({message: "Internal Server Error when searching by Category "
         + req.params.category})
@@ -35,12 +35,12 @@ exports.getByCategory = function(req, res){
 
 }
 
-export.getByProductId = function(req, res){
+exports.getByProductId = function(req, res){
 
-  Products.getByProductId(req.params.productId, function(error, data){
+  Product.getByProductId(req.params.productId, function(error, data){
     if(error){
       res.status(500).send({message: "Internal Server Error when searching by Id "
-        + req.params.productId"});
+        + req.params.productId})
     }else{
       //Name, id, category, price, quantity JSON
       res.send(data);
@@ -49,8 +49,8 @@ export.getByProductId = function(req, res){
 
 }
 
-export.getBySearch = function(req, res){
-  Products.getBySearch(req.params.itemSearch, function(error,data){
+exports.getBySearch = function(req, res){
+  Product.getBySearch(req.params.itemSearch, function(error,data){
     if(error){
       if(error.type == 'not_found'){
         req.status(404).send({message: "Could not find " + req.params.itemSearch})
