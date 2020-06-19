@@ -10,20 +10,19 @@ app.use(bodyParser.urlencoded({
 
 const Products = require('./controllers/product.controller.js')
 
-
-
 //------------Products---------------//
 
 //-----------get requests------------//
+app.get('/', function(req, res){
+  res.send("GET REQ works");
+})
 app.get('/:category', Products.getByCategory);
-
-app.get('/category/:productId', Products.getByProductId);
-
+app.get('/:category/:productId', Products.getByProductId);
 app.get('/:itemSearch', Products.getBySearch);
 //------------post-requests-----------//
 app.post('/', Products.create);
 
-
+//------------Products---------------//
 
 
 app.listen(3000);

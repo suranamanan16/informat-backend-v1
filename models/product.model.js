@@ -1,10 +1,8 @@
 const sql = require('./db.js');
 
-
 //construtor method
-//This has to be the same name as Product.create etc 
+//This has to be the same name as Product.create etc
 const Product = function(product){
-  this.id  = product.id;
   this.name = product.name;
   this.quantity = product.quantity;
   this.price = product.price;
@@ -65,4 +63,4 @@ Product.getBySearch = function(productName, result){
 }
 
 
-module.export = Product;
+module.exports = Product;

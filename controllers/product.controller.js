@@ -3,7 +3,6 @@ const Product = require('../models/product.model.js');
 exports.create = function(req, res){
 
   const product = new Product({
-    id: req.body.name,
     name: req.body.name,
     quantity: req.body.quantity,
     price: req.body.price,
