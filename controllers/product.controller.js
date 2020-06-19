@@ -13,3 +13,17 @@ exports.getByCategory = function(req, res){
   });
 
 }
+
+export.getByProductId = function(req, res){
+
+  Products.getByProductId(req.params.productId, function(error, data){
+    if(error){
+      res.status(500).send({message: "Internal Server Error when searching by Id"
+        + req.params.productId"});
+    }else{
+      //Name, id, category, price, quantity JSON
+      res.send(data);
+    }
+  });
+
+}
