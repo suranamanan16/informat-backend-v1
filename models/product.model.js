@@ -1,22 +1,17 @@
-const sql = require("./db.js");
+const sql = require('./db.js');
 
-var findById = function(productId, result) {
-    sql.query("SELECT * FROM products WHERE id = ?", productId, function(err, res) {
-      if (err) {
-        console.log(err);
-        result(err, null);
-        return;
-      }
+//getByCategory
 
-      if (res.length) {
-        result(null, res[0]);
-        return;
-      }
+Product.getByCategory = function(category, result){
+  sql.query();
+}
 
-      result({
-        type: "not_found"
-      }, null);
-    });
-  }
+//getBySearch
+Product.getBySearch = function(productName, result){
+  sql.query();
+}
 
-module.exports = findById;
+//getByProductId
+Product.getByProductId = function(productId, result){
+  sql.query();
+}
