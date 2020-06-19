@@ -2,6 +2,7 @@ const sql = require('./db.js');
 
 
 //construtor method
+//This has to be the same name as Product.create etc 
 const Product = function(product){
   this.id  = product.id;
   this.name = product.name;
