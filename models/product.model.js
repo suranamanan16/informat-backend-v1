@@ -1,10 +1,5 @@
 const sql = require('./db.js');
 
-
-
-
-
-
 //getByCategory
 Product.getByCategory = function(category, result){
   sql.query('SELECT * FROM products WHERE category = ?', category, function(err, res){
@@ -35,8 +30,12 @@ Product.getByProductId = function(productId, result){
   sql.query('SELECT * FROM products WHERE id = ?', productId, function(err, res){
     if(err){
       result(err, null)
+      return;
     }else{
       result(null, res)
+      return;
     }
   });
 }
+
+module.export = Products;

@@ -8,7 +8,9 @@ app.use(bodyParser.urlencoded({
   extended: true
 }));
 
-app.get('/:category', ){
+const Products = require('./controllers/product.controller.js')
+
+app.get('/:category',){
 
 }
 
