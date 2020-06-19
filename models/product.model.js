@@ -19,19 +19,24 @@ Product.getByCategory = function(category, result){
 }
 
 Product.getBySearch = function(productName, result){
-  sql.query('SELECT * FROM products WHERE name LIKE '%productName%'	',   ,function(err, res){
+  sql.query('SELECT * FROM products WHERE name LIKE '%productName%'',function(err, res){
     if(err){
-      result(err, null);
+      result({type: 'not_found'}, null);
+      return;
     }else{
       result(null, res);
+      return;
     }
-
-
-
   });
 }
 
 //getByProductId
 Product.getByProductId = function(productId, result){
-  sql.query();
+  sql.query('SELECT * FROM products WHERE id = ?', productId, function(err, res){
+    if(err){
+      result(err, null)
+    }else{
+      result(null, res)
+    }
+  });
 }

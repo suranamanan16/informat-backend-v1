@@ -8,10 +8,6 @@ app.use(bodyParser.urlencoded({
   extended: true
 }));
 
-app.get("/", function(req, res) {
-  res.send("Hello world");
-})
-
 app.get('/:category', ){
 
 }
