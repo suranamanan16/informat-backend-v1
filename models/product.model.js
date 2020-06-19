@@ -13,6 +13,7 @@ const product = function(product){
 Product.create(product, result){
   sql.query('INSERT INTO products SET ?', product, function(err, res){
     if(err){
+      console.log(err);
       result(err, null)
       return
     }
