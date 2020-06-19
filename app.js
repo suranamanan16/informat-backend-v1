@@ -16,9 +16,9 @@ const Products = require('./controllers/product.controller.js')
 app.get('/', function(req, res){
   res.send("GET REQ works");
 })
+app.get('/search/:itemSearch', Products.getBySearch);
 app.get('/:category', Products.getByCategory);
 app.get('/:category/:productId', Products.getByProductId);
-app.get('/:itemSearch', Products.getBySearch);
 //------------post-requests-----------//
 app.post('/', Products.create);
 

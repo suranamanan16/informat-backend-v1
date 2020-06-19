@@ -51,12 +51,7 @@ exports.getByProductId = function(req, res){
 exports.getBySearch = function(req, res){
   Product.getBySearch(req.params.itemSearch, function(error,data){
     if(error){
-      if(error.type == 'not_found'){
-        req.status(404).send({message: "Could not find " + req.params.itemSearch})
-      }else{
-        req.status(500).send({message: "Internal Server Error when searching for "
-          + req.params.itemSearch})
-      }
+        req.status(404).send({message: "Could not find " + req.params.itemSearch});
     }else{
       res.send(data);
     }
