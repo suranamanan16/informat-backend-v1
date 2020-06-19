@@ -13,18 +13,6 @@ Product.getByCategory = function(category, result){
   });
 }
 
-Product.getBySearch = function(productName, result){
-  sql.query('SELECT * FROM products WHERE name LIKE '%productName%'',function(err, res){
-    if(err){
-      result({type: 'not_found'}, null);
-      return;
-    }else{
-      result(null, res);
-      return;
-    }
-  });
-}
-
 //getByProductId
 Product.getByProductId = function(productId, result){
   sql.query('SELECT * FROM products WHERE id = ?', productId, function(err, res){
@@ -37,5 +25,19 @@ Product.getByProductId = function(productId, result){
     }
   });
 }
+
+//getBySearch
+Product.getBySearch = function(productName, result){
+  sql.query('SELECT * FROM products WHERE name LIKE '%productName%'',function(err, res){
+    if(err){
+      result({type: 'not_found'}, null);
+      return;
+    }else{
+      result(null, res);
+      return;
+    }
+  });
+}
+
 
 module.export = Products;
