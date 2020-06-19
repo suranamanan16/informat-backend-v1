@@ -1,14 +1,34 @@
 const sql = require('./db.js');
 
-//getByCategory
 
+
+
+
+
+//getByCategory
 Product.getByCategory = function(category, result){
-  sql.query();
+  sql.query('SELECT * FROM products WHERE category = ?', category, function(err, res){
+    if(err){
+      result(err, null)
+      return
+    }else{
+      result(null, res);
+      return
+    }
+  });
 }
 
-//getBySearch
 Product.getBySearch = function(productName, result){
-  sql.query();
+  sql.query('SELECT * FROM products WHERE name LIKE '%productName%'	',   ,function(err, res){
+    if(err){
+      result(err, null);
+    }else{
+      result(null, res);
+    }
+
+
+
+  });
 }
 
 //getByProductId
