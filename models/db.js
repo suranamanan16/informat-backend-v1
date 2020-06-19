@@ -19,5 +19,5 @@ connection.connect(function(err){
 });
 
 //export to use in model class to make queries based on the get request calls from
-//the app.js file 
+//the app.js file
 module.exports = connection;

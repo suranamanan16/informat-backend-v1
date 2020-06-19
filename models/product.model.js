@@ -1,5 +1,29 @@
 const sql = require('./db.js');
 
+
+//construtor method
+const product = function(product){
+  this.id  = product.id;
+  this.name = product.name;
+  this.quantity = product.quantity;
+  this.price = product.price;
+  this.category = product.category;
+}
+
+Product.create(product, result){
+  sql.query('INSERT INTO products SET ?', product, function(err, res){
+    if(err){
+      result(err, null)
+      return
+    }
+    else{
+      result(null, res);
+      return
+    }
+  });
+}
+
+
 //getByCategory
 Product.getByCategory = function(category, result){
   sql.query('SELECT * FROM products WHERE category = ?', category, function(err, res){
