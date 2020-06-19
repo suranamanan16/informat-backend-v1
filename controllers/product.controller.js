@@ -1,5 +1,26 @@
 const Products = require('../models/product.model.js');
 
+exports.create = function(req, res){
+
+  const product = new Product({
+    id: req.body.name,
+    name: req.body.name,
+    quantity: req.body.quantity,
+    price: req.body.price,
+    category: req.body.category
+  })
+
+  Products.create(product, (err, data) => {
+    if (err)
+      res.status(500).send({
+        message:
+          err.message || "Some error occurred while creating the Customer."
+      });
+    else res.send(data);
+  });
+}
+
+
 exports.getByCategory = function(req, res){
 
   Products.getByCategory(req.params.category, function(error, data){
