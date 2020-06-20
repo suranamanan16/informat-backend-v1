@@ -51,9 +51,9 @@ exports.getByProductId = function(req, res){
 exports.getBySearch = function(req, res){
   Product.getBySearch(req.params.itemSearch, function(error,data){
     if(error){
-        req.status(404).send({message: "Could not find " + req.params.itemSearch});
+        res.status(404).send({message: "Could not find " + req.params.itemSearch});
     }else{
-      res.send(data);
+        res.send(data);
     }
   });
 }

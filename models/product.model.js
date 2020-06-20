@@ -51,7 +51,8 @@ Product.getByProductId = function(productId, result){
 
 //getBySearch
 Product.getBySearch = function(productName, result){
-  sql.query('SELECT * FROM products WHERE name LIKE '%productName%'', function(err, res){
+  sql.query('SELECT * FROM products WHERE name = ?', productName, function(err, res){
+  // sql.query('SELECT * FROM products WHERE name LIKE '%' + productName + '%' ', function(err, res){
     if(err){
       result({type: 'not_found'}, null);
       return;
